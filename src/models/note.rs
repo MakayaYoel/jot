@@ -1,24 +1,22 @@
 use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Note {
-    id: u64,
-    content: String
+pub struct Note<'a> {
+    title: &'a str,
+    content: &'a str,
+    tags: Vec<&'a str>
 }
 
-impl Note {
-    pub fn new(id: u64, content: String) -> Self {
+impl<'a> Note<'a> {
+    pub fn new(title: &'a str, content: &'a str, tags: Vec<&'a str>) -> Self {
         Self {
-            id,
-            content
+            title,
+            content,
+            tags,
         }
     }
 
-    pub fn id(&self) -> u64 {
-        self.id
-    }
-
-    pub fn content(&self) -> &String {
-        &self.content
+    pub fn title(&self) -> &str {
+        self.title
     }
 }
