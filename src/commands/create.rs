@@ -8,10 +8,10 @@ pub fn create_note() {
     let content = utils::ask("Enter note content");
     let tags = utils::ask("Enter tags (comma-seperated, optional)").replace(" ", "");
 
-    let tags: Vec<&str> = tags.split(",").collect();
+    let tags: Vec<String> = tags.split(",").map(|val| val.to_string()).collect();
 
     // TODO: make some kind of "next id" thing
-    let note = Note::new(&title, &content, tags);
+    let note = Note::new(title, content, tags);
     let serialized_note = serde_json::to_string(&note).unwrap();
 
     if !fs::exists("assets").unwrap() {

@@ -5,6 +5,7 @@ use clearscreen::ClearScreen;
 mod commands;
 mod models;
 mod utils;
+mod storage;
 
 fn main() {
     loop {

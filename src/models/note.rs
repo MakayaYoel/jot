@@ -1,14 +1,14 @@
 use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Note<'a> {
-    title: &'a str,
-    content: &'a str,
-    tags: Vec<&'a str>
+pub struct Note {
+    title: String,
+    content: String,
+    tags: Vec<String>
 }
 
-impl<'a> Note<'a> {
-    pub fn new(title: &'a str, content: &'a str, tags: Vec<&'a str>) -> Self {
+impl Note {
+    pub fn new(title: String, content: String, tags: Vec<String>) -> Self {
         Self {
             title,
             content,
@@ -16,7 +16,7 @@ impl<'a> Note<'a> {
         }
     }
 
-    pub fn title(&self) -> &str {
-        self.title
+    pub fn title(&self) -> &String {
+        &self.title
     }
 }
